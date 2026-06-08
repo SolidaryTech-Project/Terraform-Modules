@@ -12,6 +12,8 @@ repos:
     rev: v1.86.0
     hooks:
       - id: terraform_fmt #Identação do código
+      - id: terraform_tflint #Linter de boas práticas e erros potenciais
+      - id: terraform_trivy #Análise estática de segurança
       - id: terraform_docs #Gera/atualiza README.md a partir dos .tf
         args:
           - --hook-config=--path-to-file=README.md

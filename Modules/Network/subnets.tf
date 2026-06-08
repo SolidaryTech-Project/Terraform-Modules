@@ -1,6 +1,7 @@
 #============================================
 # Subnets
 #============================================
+# trivy:ignore:AVD-AWS-0164
 resource "aws_subnet" "this" {
   for_each = local.subnets_indexed
 

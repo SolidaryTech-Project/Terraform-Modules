@@ -1,0 +1,2 @@
+# deletion_protection=false is intentional — allows easy terraform destroy during hackathon
+AVD-AWS-0177
