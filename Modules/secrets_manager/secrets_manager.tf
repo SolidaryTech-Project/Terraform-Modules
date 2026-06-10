@@ -10,11 +10,16 @@ resource "aws_secretsmanager_secret" "this" {
   })
 }
 
-# Only creates a version for secrets that have a value defined.
 # Secrets with value = null are created empty and filled externally (e.g. by CI/CD pipeline).
+# for_each must only depend on var.secrets' keys (known at plan time), not on
+# each.value.value, since some values are unknown until apply (e.g. resource attributes).
 resource "aws_secretsmanager_secret_version" "this" {
-  for_each = { for k, v in var.secrets : k => v if v.value != null }
+  for_each = var.secrets
 
   secret_id     = aws_secretsmanager_secret.this[each.key].id
-  secret_string = each.value.value
+  secret_string = coalesce(each.value.value, "")
+
+  lifecycle {
+    ignore_changes = [secret_string]
+  }
 }
