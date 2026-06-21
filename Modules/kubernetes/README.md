@@ -53,10 +53,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_namespace_analytics"></a> [namespace\_analytics](#output\_namespace\_analytics) | Namespace do analytics-service |
-| <a name="output_namespace_auth"></a> [namespace\_auth](#output\_namespace\_auth) | Namespace do auth-service |
-| <a name="output_namespace_evaluation"></a> [namespace\_evaluation](#output\_namespace\_evaluation) | Namespace do evaluation-service |
-| <a name="output_namespace_flag"></a> [namespace\_flag](#output\_namespace\_flag) | Namespace do flag-service |
-| <a name="output_namespace_targeting"></a> [namespace\_targeting](#output\_namespace\_targeting) | Namespace do targeting-service |
 | <a name="output_namespaces"></a> [namespaces](#output\_namespaces) | Map de todas as namespaces criadas |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
