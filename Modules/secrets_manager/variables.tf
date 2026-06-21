@@ -11,10 +11,10 @@ variable "secret_path_prefix" {
 variable "secrets" {
   type = map(object({
     description = string
-    value       = optional(string, null)
+    value       = optional(map(string), null)
     service_tag = optional(string, "shared")
   }))
-  description = "Map of secrets to manage. Key = path suffix after secret_path_prefix. value = null means the secret will be populated externally (e.g. by a pipeline)."
+  description = "Map of secrets to manage. Key = path suffix after secret_path_prefix. value = map of key-value pairs stored as JSON (required by ESO dataFrom.extract). null means the secret will be populated externally."
   default     = {}
 }
 

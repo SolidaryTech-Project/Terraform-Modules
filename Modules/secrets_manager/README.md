@@ -40,7 +40,7 @@ No modules.
 | <a name="input_oidc_provider_arn"></a> [oidc\_provider\_arn](#input\_oidc\_provider\_arn) | ARN of the EKS OIDC provider (for IRSA) | `string` | n/a | yes |
 | <a name="input_oidc_provider_url"></a> [oidc\_provider\_url](#input\_oidc\_provider\_url) | URL of the EKS OIDC provider (e.g. https://oidc.eks.<region>.amazonaws.com/id/XXXX) | `string` | n/a | yes |
 | <a name="input_secret_path_prefix"></a> [secret\_path\_prefix](#input\_secret\_path\_prefix) | Path prefix for all secrets (e.g. 'myproject/production'). Secrets are created at <prefix>/<key>. | `string` | n/a | yes |
-| <a name="input_secrets"></a> [secrets](#input\_secrets) | Map of secrets to manage. Key = path suffix after secret\_path\_prefix. value = null means the secret will be populated externally (e.g. by a pipeline). | <pre>map(object({<br>    description = string<br>    value       = optional(string, null)<br>    service_tag = optional(string, "shared")<br>  }))</pre> | `{}` | no |
+| <a name="input_secrets"></a> [secrets](#input\_secrets) | Map of secrets to manage. Key = path suffix after secret\_path\_prefix. value = map of key-value pairs stored as JSON (required by ESO dataFrom.extract). null means the secret will be populated externally. | <pre>map(object({<br>    description = string<br>    value       = optional(map(string), null)<br>    service_tag = optional(string, "shared")<br>  }))</pre> | `{}` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to apply to all resources | `map(string)` | `{}` | no |
 
 ## Outputs

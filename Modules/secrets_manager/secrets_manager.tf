@@ -6,7 +6,7 @@ resource "aws_secretsmanager_secret" "this" {
   recovery_window_in_days = 0
 
   tags = merge(var.tags, {
-    Service = try(join(", ", each.value.service_tag), tostring(each.value.service_tag))
+    Service = each.value.service_tag
   })
 }
 
@@ -17,9 +17,6 @@ resource "aws_secretsmanager_secret_version" "this" {
   for_each = var.secrets
 
   secret_id     = aws_secretsmanager_secret.this[each.key].id
-  secret_string = each.value.value != null ? each.value.value : " "
+  secret_string = each.value.value != null ? jsonencode(each.value.value) : "{}"
 
-  lifecycle {
-    ignore_changes = [secret_string]
-  }
 }
