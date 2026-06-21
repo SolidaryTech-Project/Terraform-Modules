@@ -6,7 +6,7 @@ resource "aws_secretsmanager_secret" "this" {
   recovery_window_in_days = 0
 
   tags = merge(var.tags, {
-    Service = each.value.service_tag
+    Service = try(join(", ", each.value.service_tag), tostring(each.value.service_tag))
   })
 }
 
