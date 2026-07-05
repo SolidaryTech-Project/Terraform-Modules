@@ -15,17 +15,39 @@ module "ecr" {
     rules = [
       {
         rulePriority = 1
-        description  = "Keep last 10 images"
+        description  = "Keep last 2 development images"
         selection = {
           tagStatus     = "tagged"
-          tagPrefixList = ["v"]
+          tagPrefixList = ["development-"]
           countType     = "imageCountMoreThan"
-          countNumber   = 10
+          countNumber   = 2
         }
         action = { type = "expire" }
       },
       {
         rulePriority = 2
+        description  = "Keep last 2 staging images"
+        selection = {
+          tagStatus     = "tagged"
+          tagPrefixList = ["staging-"]
+          countType     = "imageCountMoreThan"
+          countNumber   = 2
+        }
+        action = { type = "expire" }
+      },
+      {
+        rulePriority = 3
+        description  = "Keep last 2 production images"
+        selection = {
+          tagStatus     = "tagged"
+          tagPrefixList = ["production-"]
+          countType     = "imageCountMoreThan"
+          countNumber   = 2
+        }
+        action = { type = "expire" }
+      },
+      {
+        rulePriority = 4
         description  = "Remove untagged images after 7 days"
         selection = {
           tagStatus   = "untagged"
