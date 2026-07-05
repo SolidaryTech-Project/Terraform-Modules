@@ -6,6 +6,11 @@
 # provisionar um NLB pela AWS Cloud Provider nativa.
 #============================================
 
+locals {
+  # AWS cloud provider expects "Key1=Value1,Key2=Value2"
+  nlb_resource_tags = join(",", [for k, v in var.tags : "${k}=${v}"])
+}
+
 resource "helm_release" "nginx_ingress" {
   name       = "ingress-nginx"
   repository = "https://kubernetes.github.io/ingress-nginx"
@@ -33,6 +38,11 @@ resource "helm_release" "nginx_ingress" {
   set {
     name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-cross-zone-load-balancing-enabled"
     value = "true"
+  }
+
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-additional-resource-tags"
+    value = local.nlb_resource_tags
   }
 
   set {

@@ -13,6 +13,12 @@ variable "vpc_id" {
   description = "VPC ID where the NLB lives (used to verify cleanup on destroy)"
 }
 
+variable "tags" {
+  type        = map(string)
+  description = "Tags applied to AWS resources provisioned outside Terraform (e.g. the NLB behind the ingress-nginx Service)"
+  default     = {}
+}
+
 #============================================
 # External Secrets Operator
 #============================================
@@ -67,4 +73,19 @@ variable "metrics_server_chart_version" {
   type        = string
   description = "metrics-server Helm chart version"
   default     = "3.12.2"
+}
+
+#============================================
+# KEDA
+#============================================
+variable "keda_namespace" {
+  type        = string
+  description = "Namespace where KEDA will be installed"
+  default     = "keda"
+}
+
+variable "keda_chart_version" {
+  type        = string
+  description = "KEDA Helm chart version"
+  default     = "2.20.1"
 }

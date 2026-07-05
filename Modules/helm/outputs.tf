@@ -27,3 +27,13 @@ output "metrics_server_release_name" {
   description = "Nome do release Helm do Metrics Server"
   value       = helm_release.metrics_server.name
 }
+
+output "keda_release_name" {
+  description = "Nome do release Helm do KEDA"
+  value       = helm_release.keda.name
+}
+
+output "keda_namespace" {
+  description = "Namespace onde o KEDA está instalado"
+  value       = helm_release.keda.namespace
+}
