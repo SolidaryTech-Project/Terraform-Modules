@@ -53,10 +53,17 @@ resource "helm_release" "kubecost" {
   values = [yamlencode({
     # Sem Grafana embutido — observabilidade vai pro Datadog
     global = {
+      # clusterId exigido pelo subchart finops-agent do Kubecost
+      clusterId = var.cluster_name
       grafana = {
         enabled = false
         proxy   = false
       }
+    }
+
+    # Agente FinOps (integracao cloud/enterprise) desligado — minimo
+    finopsagent = {
+      enabled = false
     }
 
     # cost-analyzer efemero (sem PV, sem EBS)
