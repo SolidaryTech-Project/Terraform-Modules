@@ -70,7 +70,8 @@ resource "helm_release" "kubecost" {
     # Prometheus bundled: minimo, isolado, retencao curta, sem PV
     prometheus = {
       server = {
-        retention = "2d"
+        # Kubecost exige retencao >= 3 dias (resolucao diaria). 3d = minimo.
+        retention = "3d"
         persistentVolume = {
           enabled = false
         }
