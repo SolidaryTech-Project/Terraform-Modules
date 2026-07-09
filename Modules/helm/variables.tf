@@ -89,3 +89,9 @@ variable "keda_chart_version" {
   description = "KEDA Helm chart version"
   default     = "2.20.1"
 }
+
+variable "keda_role_arn" {
+  type        = string
+  description = "ARN da role IRSA para o SA do keda-operator (vazio = sem IRSA/SQS scaler)"
+  default     = ""
+}

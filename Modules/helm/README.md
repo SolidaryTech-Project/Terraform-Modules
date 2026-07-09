@@ -43,6 +43,7 @@ No modules.
 | <a name="input_eso_service_account_name"></a> [eso\_service\_account\_name](#input\_eso\_service\_account\_name) | ESO ServiceAccount name (must match the IRSA trust policy) | `string` | `"external-secrets"` | no |
 | <a name="input_keda_chart_version"></a> [keda\_chart\_version](#input\_keda\_chart\_version) | KEDA Helm chart version | `string` | `"2.20.1"` | no |
 | <a name="input_keda_namespace"></a> [keda\_namespace](#input\_keda\_namespace) | Namespace where KEDA will be installed | `string` | `"keda"` | no |
+| <a name="input_keda_role_arn"></a> [keda\_role\_arn](#input\_keda\_role\_arn) | ARN da role IRSA para o SA do keda-operator (vazio = sem IRSA/SQS scaler) | `string` | `""` | no |
 | <a name="input_metrics_server_chart_version"></a> [metrics\_server\_chart\_version](#input\_metrics\_server\_chart\_version) | metrics-server Helm chart version | `string` | `"3.12.2"` | no |
 | <a name="input_metrics_server_namespace"></a> [metrics\_server\_namespace](#input\_metrics\_server\_namespace) | Namespace where Metrics Server will be installed | `string` | `"kube-system"` | no |
 | <a name="input_nginx_chart_version"></a> [nginx\_chart\_version](#input\_nginx\_chart\_version) | ingress-nginx Helm chart version | `string` | `"4.11.3"` | no |

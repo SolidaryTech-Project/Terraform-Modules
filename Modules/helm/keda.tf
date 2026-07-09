@@ -19,6 +19,16 @@ resource "helm_release" "keda" {
 
   create_namespace = true
 
+  # Anota o SA do keda-operator com a role IRSA quando fornecida.
+  # Necessario para o scaler aws-sqs-queue autenticar via podIdentity: aws-eks.
+  dynamic "set" {
+    for_each = var.keda_role_arn != "" ? [1] : []
+    content {
+      name  = "serviceAccount.operator.annotations.eks\\.amazonaws\\.com/role-arn"
+      value = var.keda_role_arn
+    }
+  }
+
   wait    = true
   timeout = 300
 }

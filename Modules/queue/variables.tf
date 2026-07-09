@@ -50,3 +50,36 @@ variable "dlq_message_retention_seconds" {
   description = "Seconds the DLQ retains a message"
   default     = 86400
 }
+
+#============================================
+# KEDA IRSA (optional)
+#============================================
+variable "create_keda_irsa" {
+  type        = bool
+  description = "Cria a role IRSA para o KEDA ler esta fila (scaler aws-sqs-queue)"
+  default     = false
+}
+
+variable "oidc_provider_arn" {
+  type        = string
+  description = "ARN do OIDC provider do EKS (para IRSA do KEDA)"
+  default     = ""
+}
+
+variable "oidc_provider_url" {
+  type        = string
+  description = "URL do OIDC provider do EKS (para IRSA do KEDA)"
+  default     = ""
+}
+
+variable "keda_namespace" {
+  type        = string
+  description = "Namespace onde o keda-operator roda"
+  default     = "keda"
+}
+
+variable "keda_service_account_name" {
+  type        = string
+  description = "Nome do ServiceAccount do keda-operator"
+  default     = "keda-operator"
+}
