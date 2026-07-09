@@ -2,7 +2,10 @@
 # IRSA role for ECR access
 #============================================
 resource "aws_iam_role" "ecr_role" {
-  name = "${var.name}-ecr-role-${var.repository_name}"
+  # var.name ja e unico por servico (projeto-ambiente-servico), entao nao
+  # repetimos repository_name aqui — evita estourar o limite de 64 chars
+  # do IAM (AWS: "expected length of name to be in the range (1 - 64)").
+  name = "${var.name}-ecr-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -23,7 +26,7 @@ resource "aws_iam_role" "ecr_role" {
 }
 
 resource "aws_iam_role_policy" "ecr_policy" {
-  name = "${var.name}-ecr-policy-${var.repository_name}"
+  name = "${var.name}-ecr-policy"
   role = aws_iam_role.ecr_role.id
 
   policy = jsonencode({

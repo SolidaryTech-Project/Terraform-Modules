@@ -27,6 +27,7 @@ No modules.
 |------|------|
 | [helm_release.external_secrets](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [helm_release.keda](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.kubecost](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [helm_release.metrics_server](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [helm_release.nginx_ingress](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [null_resource.nginx_lb_drain](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
@@ -44,6 +45,9 @@ No modules.
 | <a name="input_keda_chart_version"></a> [keda\_chart\_version](#input\_keda\_chart\_version) | KEDA Helm chart version | `string` | `"2.20.1"` | no |
 | <a name="input_keda_namespace"></a> [keda\_namespace](#input\_keda\_namespace) | Namespace where KEDA will be installed | `string` | `"keda"` | no |
 | <a name="input_keda_role_arn"></a> [keda\_role\_arn](#input\_keda\_role\_arn) | ARN da role IRSA para o SA do keda-operator (vazio = sem IRSA/SQS scaler) | `string` | `""` | no |
+| <a name="input_kubecost_chart_version"></a> [kubecost\_chart\_version](#input\_kubecost\_chart\_version) | cost-analyzer Helm chart version | `string` | `"2.9.6"` | no |
+| <a name="input_kubecost_datadog_scrape"></a> [kubecost\_datadog\_scrape](#input\_kubecost\_datadog\_scrape) | Injeta anotacoes de autodiscovery do Datadog Agent para raspar o /metrics do cost-model | `bool` | `false` | no |
+| <a name="input_kubecost_namespace"></a> [kubecost\_namespace](#input\_kubecost\_namespace) | Namespace onde o Kubecost sera instalado | `string` | `"kubecost"` | no |
 | <a name="input_metrics_server_chart_version"></a> [metrics\_server\_chart\_version](#input\_metrics\_server\_chart\_version) | metrics-server Helm chart version | `string` | `"3.12.2"` | no |
 | <a name="input_metrics_server_namespace"></a> [metrics\_server\_namespace](#input\_metrics\_server\_namespace) | Namespace where Metrics Server will be installed | `string` | `"kube-system"` | no |
 | <a name="input_nginx_chart_version"></a> [nginx\_chart\_version](#input\_nginx\_chart\_version) | ingress-nginx Helm chart version | `string` | `"4.11.3"` | no |
@@ -60,6 +64,9 @@ No modules.
 | <a name="output_eso_service_account_name"></a> [eso\_service\_account\_name](#output\_eso\_service\_account\_name) | Nome do ServiceAccount do ESO (para referenciar em ClusterSecretStore) |
 | <a name="output_keda_namespace"></a> [keda\_namespace](#output\_keda\_namespace) | Namespace onde o KEDA está instalado |
 | <a name="output_keda_release_name"></a> [keda\_release\_name](#output\_keda\_release\_name) | Nome do release Helm do KEDA |
+| <a name="output_kubecost_metrics_endpoint"></a> [kubecost\_metrics\_endpoint](#output\_kubecost\_metrics\_endpoint) | Endpoint /metrics do cost-model para scrape (Datadog/Prometheus) |
+| <a name="output_kubecost_namespace"></a> [kubecost\_namespace](#output\_kubecost\_namespace) | Namespace onde o Kubecost está instalado |
+| <a name="output_kubecost_release_name"></a> [kubecost\_release\_name](#output\_kubecost\_release\_name) | Nome do release Helm do Kubecost |
 | <a name="output_metrics_server_release_name"></a> [metrics\_server\_release\_name](#output\_metrics\_server\_release\_name) | Nome do release Helm do Metrics Server |
 | <a name="output_nginx_ingress_namespace"></a> [nginx\_ingress\_namespace](#output\_nginx\_ingress\_namespace) | Namespace onde o NGINX Ingress Controller está instalado |
 | <a name="output_nginx_ingress_release_name"></a> [nginx\_ingress\_release\_name](#output\_nginx\_ingress\_release\_name) | Nome do release Helm do NGINX Ingress Controller |

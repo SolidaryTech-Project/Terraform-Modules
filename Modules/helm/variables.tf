@@ -95,3 +95,24 @@ variable "keda_role_arn" {
   description = "ARN da role IRSA para o SA do keda-operator (vazio = sem IRSA/SQS scaler)"
   default     = ""
 }
+
+#============================================
+# Kubecost
+#============================================
+variable "kubecost_namespace" {
+  type        = string
+  description = "Namespace onde o Kubecost sera instalado"
+  default     = "kubecost"
+}
+
+variable "kubecost_chart_version" {
+  type        = string
+  description = "cost-analyzer Helm chart version"
+  default     = "2.9.6"
+}
+
+variable "kubecost_datadog_scrape" {
+  type        = bool
+  description = "Injeta anotacoes de autodiscovery do Datadog Agent para raspar o /metrics do cost-model"
+  default     = false
+}

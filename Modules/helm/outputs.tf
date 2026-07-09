@@ -37,3 +37,18 @@ output "keda_namespace" {
   description = "Namespace onde o KEDA está instalado"
   value       = helm_release.keda.namespace
 }
+
+output "kubecost_release_name" {
+  description = "Nome do release Helm do Kubecost"
+  value       = helm_release.kubecost.name
+}
+
+output "kubecost_namespace" {
+  description = "Namespace onde o Kubecost está instalado"
+  value       = helm_release.kubecost.namespace
+}
+
+output "kubecost_metrics_endpoint" {
+  description = "Endpoint /metrics do cost-model para scrape (Datadog/Prometheus)"
+  value       = "http://kubecost-cost-analyzer.${helm_release.kubecost.namespace}.svc.cluster.local:9003/metrics"
+}
