@@ -107,8 +107,8 @@ variable "kubecost_namespace" {
 
 variable "kubecost_chart_version" {
   type        = string
-  description = "cost-analyzer Helm chart version"
-  default     = "2.9.6"
+  description = "cost-analyzer Helm chart version (2.8.x = ultima arquitetura classica com Prometheus bundled; 2.9.x e ponte de migracao p/ 3.0, nao usar em install novo)"
+  default     = "2.8.6"
 }
 
 variable "kubecost_datadog_scrape" {
