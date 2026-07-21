@@ -116,3 +116,9 @@ variable "kubecost_datadog_scrape" {
   description = "Injeta anotacoes de autodiscovery do Datadog Agent para raspar o /metrics do cost-model"
   default     = false
 }
+
+variable "kubecost_forecasting_enabled" {
+  type        = bool
+  description = "Habilita o pod de forecasting do Kubecost. Default nos limits do chart e 1 vCPU / 1Gi de memoria so pra esse pod - pesado demais para nodes t3.small (2 vCPU / ~1.5Gi alocavel) somado ao resto dos addons. So ligar em node groups com folga de recursos."
+  default     = false
+}

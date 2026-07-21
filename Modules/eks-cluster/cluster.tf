@@ -28,3 +28,16 @@ resource "aws_eks_cluster" "this" {
     Name = "${var.name}-cluster"
   })
 }
+
+#============================================
+# Node Monitoring Agent
+#============================================
+# Addon que reporta as condicoes de saude dos nodes (kubelet parado,
+# containerd travado, etc.). E o sinal que o node_repair_config do modulo
+# eks-nodegroup consome pra saber quando substituir um node - sem ele, o
+# Node Auto Repair fica ligado mas sem nada pra agir em cima.
+resource "aws_eks_addon" "node_monitoring_agent" {
+  count        = var.enable_node_monitoring_agent ? 1 : 0
+  cluster_name = aws_eks_cluster.this.name
+  addon_name   = "eks-node-monitoring-agent"
+}

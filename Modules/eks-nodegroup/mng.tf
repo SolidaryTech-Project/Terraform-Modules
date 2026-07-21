@@ -15,6 +15,14 @@ resource "aws_eks_node_group" "this" {
     min_size     = var.min_size
   }
 
+  # Sem isso, um node com kubelet/containerd travado (ex.: OOM) fica
+  # NotReady pra sempre - nada troca ele automaticamente, os pods presos
+  # nele nunca terminam de sair e ate o terraform destroy trava esperando
+  # os namespaces esvaziarem.
+  node_repair_config {
+    enabled = var.enable_node_auto_repair
+  }
+
   tags = merge(var.tags, {
     Name = "${var.name}-node-group"
   })

@@ -37,6 +37,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region (used for kubeconfig refresh on destroy) | `string` | n/a | yes |
+| <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | EKS cluster name (used for kubeconfig refresh on destroy) | `string` | n/a | yes |
 | <a name="input_db_init_services"></a> [db\_init\_services](#input\_db\_init\_services) | Set of service names to run database init jobs for. Each service must have a corresponding SQL file at sql/<service-without-suffix>.sql | `set(string)` | `[]` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment name (e.g. development, production) | `string` | n/a | yes |
 | <a name="input_eso_service_account_name"></a> [eso\_service\_account\_name](#input\_eso\_service\_account\_name) | ServiceAccount name of the External Secrets Operator | `string` | `"external-secrets"` | no |

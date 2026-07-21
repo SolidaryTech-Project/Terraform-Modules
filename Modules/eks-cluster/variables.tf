@@ -37,3 +37,9 @@ variable "tags" {
   description = "Tags to apply to all resources"
   default     = {}
 }
+
+variable "enable_node_monitoring_agent" {
+  type        = bool
+  description = "Instala o addon eks-node-monitoring-agent, necessario para o Node Auto Repair (var enable_node_auto_repair do modulo eks-nodegroup) funcionar"
+  default     = true
+}

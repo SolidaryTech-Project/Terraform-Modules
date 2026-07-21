@@ -89,6 +89,14 @@ resource "helm_release" "kubecost" {
       enabled = false
     }
 
+    # Forecasting vem enabled=true por padrao no chart, com limits de 1
+    # vCPU / 1Gi so pra esse pod - foi o que estourou a memoria dos nodes
+    # t3.small e derrubou o kubelet. Desligado por padrao (var default
+    # false); so habilitar em node group com folga de recursos.
+    forecasting = {
+      enabled = var.kubecost_forecasting_enabled
+    }
+
     # Recursos enxutos do proprio Kubecost
     kubecostModel = {
       resources = {

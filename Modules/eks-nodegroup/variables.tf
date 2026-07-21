@@ -48,3 +48,9 @@ variable "tags" {
   description = "Tags to apply to all resources"
   default     = {}
 }
+
+variable "enable_node_auto_repair" {
+  type        = bool
+  description = "Habilita o EKS Node Auto Repair: substitui automaticamente nodes que o node monitoring agent reporta como travados (ex.: kubelet/containerd morto por OOM), em vez de ficarem NotReady indefinidamente. Requer o addon eks-node-monitoring-agent no cluster."
+  default     = true
+}

@@ -35,6 +35,7 @@ No modules.
 | <a name="input_ami_type"></a> [ami\_type](#input\_ami\_type) | AMI type for the node group | `string` | `"AL2023_x86_64_STANDARD"` | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | EKS cluster name to join | `string` | n/a | yes |
 | <a name="input_desired_size"></a> [desired\_size](#input\_desired\_size) | Desired number of worker nodes | `number` | `2` | no |
+| <a name="input_enable_node_auto_repair"></a> [enable\_node\_auto\_repair](#input\_enable\_node\_auto\_repair) | Habilita o EKS Node Auto Repair: substitui automaticamente nodes que o node monitoring agent reporta como travados (ex.: kubelet/containerd morto por OOM), em vez de ficarem NotReady indefinidamente. Requer o addon eks-node-monitoring-agent no cluster. | `bool` | `true` | no |
 | <a name="input_instance_types"></a> [instance\_types](#input\_instance\_types) | EC2 instance types for the node group | `list(string)` | <pre>[<br>  "t3.small"<br>]</pre> | no |
 | <a name="input_max_size"></a> [max\_size](#input\_max\_size) | Maximum number of worker nodes | `number` | `4` | no |
 | <a name="input_min_size"></a> [min\_size](#input\_min\_size) | Minimum number of worker nodes | `number` | `2` | no |
